@@ -16,3 +16,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+
+
+Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function (){
+    Route::get('/users','UserController@index');
+    Route::get('/users/{id}/edit','UserController@edit');
+    Route::post('/users/{id}/add-role','UserController@addRole');
+    
+    
+    
+    Route::get('/managers','ManagerController@index');
+    Route::get('/staffs','StaffController@index');
+});
