@@ -2,7 +2,7 @@
 
 @section('content')
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-primary text-white">
                 <h4>Users</h4>
             </div>
                 <div class="card-body">
@@ -15,14 +15,18 @@
                                     <th>Phone</th>
                                     <th>Address</th>
                                     <th>Role</th>
-                                    <th>Action</th>
+                                    @foreach(Auth::user()->roles as $role)
+                                        @if($role->name == 'Manager')
+                                        <th>Action</th>
+                                        @endif
+                                    @endforeach
 
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($users as $user)
                                 <tr>
-                                    <td><img src="{{ asset('storage/images/profile/'. $user->image) }}" style="max-width:100px;" alt="Image"></td>
+                                    <td><img src="{{ asset('storage/images/profile/'.$user->name. '/' .$user->image) }}" style="max-width:100px;width:100%;height:auto;" alt="Image"></td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->phone_no }}</td>
@@ -32,15 +36,11 @@
                                             <span class="badge badge-primary">{{ $role->name }}</span>
                                         @endforeach
                                     </td>
-                                    <td>
                                         @foreach(Auth::user()->roles as $role)
                                             @if($role->name == 'Manager')
-                                            <a href="{{ url('/admin/users/'.$user->id.'/edit') }}" class="btn btn-sm btn-info">Manage Roles</a>
+                                            <td><a href="{{ url('/admin/users/'.$user->id.'/edit') }}" class="btn btn-sm btn-info">Manage Roles</a></td>
                                             @endif
                                         @endforeach
-
-                                    </td>
-                                    
                                 </tr>
                                 @endforeach
                             </tbody>

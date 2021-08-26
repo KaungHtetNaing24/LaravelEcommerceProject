@@ -82,6 +82,7 @@
                             </div>
                         </div>
 
+
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
@@ -90,10 +91,18 @@
                             </div>
                         </div>
 
+                        
+                        <div class="form-group row">
+                        <div class="col-md-4"></div>
+                            <div class="col-md-6">
+                                <img id="previewImg" src="{{ asset('storage/images/profile/profile.png') }}" alt="Product image" style="max-width:150px;width:100%;height:auto;"/>
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="image-upload" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
                                 <div class="col-md-6">
-                                    <input type="file" name="image">
+                                    <input type="file" name="image" onchange="previewFile(this)">
                                 </div>
                         </div>
 
@@ -110,4 +119,16 @@
         </div>
     </div>
 </div>
+        <script>
+            function previewFile(input){
+            var file=$("input[type=file]").get(0).files[0];
+            if(file){
+                var reader = new FileReader();
+                reader.onload = function(){
+                $('#previewImg').attr("src",reader.result);
+                }
+                reader.readAsDataURL(file);
+            }
+            }
+        </script>
 @endsection

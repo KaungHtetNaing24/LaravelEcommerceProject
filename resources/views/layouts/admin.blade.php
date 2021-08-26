@@ -43,9 +43,17 @@
     <script src="{{ asset('admin/js/perfect-scrollbar.jquery.min.js') }}" defer></script>
     
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if(session('status'))
             <script>
-                swal("{{ session('status') }}");
+                Swal.fire({
+                    position: 'top',
+                    text:("{{ session('status') }}"),
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    })
+                // swal("{{ session('status') }}");
             </script>
     @endif
     @yield('scripts')

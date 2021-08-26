@@ -31,10 +31,10 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if($user->roles[0]->name == 'Manager'){
-            return redirect('admin/managers');
+            return redirect('admin/dashboard');
         }
         if($user->roles[0]->name == 'Staff'){
-            return redirect('admin/staffs');
+            return redirect('admin/dashboard');
         }
         return redirect('/home');
     }

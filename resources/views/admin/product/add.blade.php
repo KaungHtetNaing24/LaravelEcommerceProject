@@ -2,7 +2,7 @@
 
 @section('content')
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-primary text-white">
                 <h4>Add Product</h4>
             </div>
             <div class="card-body">
@@ -79,7 +79,7 @@
                         </div>
                         
                         <div class="col-md-12 mb-3">
-                        <img id="previewImg" alt="Product image" style="max-width:250px;"/>
+                        <img id="previewImg" src="{{ asset('storage/images/product/product-image.jpg') }}" alt="Product image" style="max-width:150px;width:100%;height:auto;"/>
                         </div>
                         
                         

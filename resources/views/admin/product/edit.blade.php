@@ -2,8 +2,8 @@
 
 @section('content')
         <div class="card">
-            <div class="card-header">
-                <h4>Edit/Update Product</h4>
+            <div class="card-header bg-primary text-white">
+                <h4>Edit/Update Product<a href="{{ url('admin/products') }}" class="btn btn-success btn-sm float-right">Back</a></h4>
             </div>
             <div class="card-body">
                 <form action="{{ url('admin/update-product/'.$product->id) }}" method="POST" enctype="multipart/form-data">
@@ -80,7 +80,7 @@
                         </div>
 
                         <div class="col-md-12 mb-3">
-                        <img id="previewImg" src="{{ asset('storage/images/product/'. $product->image) }}" alt="Product image" style="max-width:250px;"/>
+                        <img id="previewImg" src="{{ asset('storage/images/product/'. $product->name . '/' . $product->image) }}" alt="Product image" style="max-width:250px;"/>
                         </div>
                         
                         <div class="col-md-12 mb-3">

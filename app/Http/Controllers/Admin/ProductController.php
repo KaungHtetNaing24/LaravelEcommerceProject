@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::All();
+        $products = Product::paginate(5);
         return view('admin.product.index',compact('products'));
     }
 
@@ -33,6 +33,7 @@ class ProductController extends Controller
             'description' => 'required',
             'quantity' => 'required',
             'original_price' => 'required',
+            'discount' => 'required',
             'final_price' => 'required',
             'image' => 'required',
             
@@ -57,7 +58,7 @@ class ProductController extends Controller
             $destination_path = 'public/images/product';
             $file = $request->file('image');
             $file_name = $file->getClientOriginalName();
-            $path = request()->file('image')->storeAs($destination_path,$file_name);
+            $path = request()->file('image')->storeAs($destination_path,$products->name. '/' .$file_name);
             
             $products->image = $file_name;
         }else{
@@ -88,6 +89,7 @@ class ProductController extends Controller
             'description' => 'required',
             'quantity' => 'required',
             'original_price' => 'required',
+            'discount' => 'required',
             'final_price' => 'required',
             
             
@@ -99,7 +101,7 @@ class ProductController extends Controller
 
         if($request->hasFile('image'))
         {
-            $path = 'storage/images/product/'.$products->image;
+            $path = 'storage/images/product/'. $products->name . '/' . $products->image;
             if(File::exists($path))
             {
                 File::delete($path);
@@ -108,7 +110,7 @@ class ProductController extends Controller
             $destination_path = 'public/images/product';
             $file = $request->file('image');
             $file_name = $file->getClientOriginalName();
-            request()->file('image')->storeAs($destination_path,$file_name);
+            request()->file('image')->storeAs($destination_path,$products->name. '/' .$file_name);
             
             $products->image = $file_name;
         }
@@ -130,7 +132,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $products = Product::find($id);
-        $path = 'storage/images/product/'.$products->image;
+        $path = 'storage/images/product/'.$products->name. '/' .$products->image;
             if(File::exists($path))
             {
                 File::delete($path);

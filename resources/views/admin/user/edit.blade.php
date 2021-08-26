@@ -2,8 +2,8 @@
 
 @section('content')
         <div class="card">
-            <div class="card-header">
-                <h4>Manage Roles</h4>
+            <div class="card-header  bg-primary text-white">
+                <h4>Manage Roles<a href="{{ url('admin/users') }}" class="btn btn-success btn-sm float-right">Back</a></h4>
             </div>
                 <div class="card-body">
                     <form action="{{ url('admin/users/'.$user->id.'/add-role') }}" method="POST">
@@ -14,7 +14,7 @@
                                 <li>Email: {{ $user->email }}</li>
                                 <li>Phone: {{ $user->phone_no }}</li>
                                 <li>Address: {{ $user->address }}</li><br>
-                                <img src="{{ asset('storage/images/profile/'. $user->image) }}" style="max-width:250px;" alt="Image">
+                                <img src="{{ asset('storage/images/profile/'.$user->name. '/' .$user->image) }}" style="max-width:150px;width:100%;height:auto;" alt="Image">
                                 <hr>
                                 <h5>Roles</h5>
                                 @foreach($roles as $role)

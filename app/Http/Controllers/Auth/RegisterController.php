@@ -85,7 +85,7 @@ class RegisterController extends Controller
         {
             $destination_path = 'public/images/profile';
             $file = request()->file('image')->getClientOriginalName();
-            request()->file('image')->storeAs($destination_path,$file,'');
+            request()->file('image')->storeAs($destination_path,$user->name. '/' .$file,'');
             $user->update(['image' => $file]);
             
          
