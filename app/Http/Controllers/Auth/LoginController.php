@@ -36,7 +36,7 @@ class LoginController extends Controller
         if($user->roles[0]->name == 'Staff'){
             return redirect('admin/dashboard');
         }
-        return redirect('/home');
+        return redirect('/');
     }
 
     /**
