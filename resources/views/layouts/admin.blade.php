@@ -35,13 +35,13 @@
 
         </div>
     </div>
-
+        <script src="{{ asset('admin/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('admin/js/popper.min.js') }}"></script>
+        <script src="{{ asset('admin/js/bootstrap-material-design.min.js') }}"></script>
+        <script src="{{ asset('admin/js/perfect-scrollbar.jquery.min.js') }}"></script>
+        <script src="{{ asset('admin/js/jquery.bootstrap-wizard.js') }}"></script>
+        <script src="{{ asset('admin/js/material-dashboard.js?v=2.1.2') }}" type="text/javascripts"></script>
         
-    <script src="{{ asset('admin/js/jquery.min.js') }}" defer></script>
-    <script src="{{ asset('admin/js/popper.min.js') }}" defer></script>
-    <script src="{{ asset('admin/js/bootstrap-material-design.min.js') }}" defer></script>
-    <script src="{{ asset('admin/js/perfect-scrollbar.jquery.min.js') }}" defer></script>
-    
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if(session('status'))
@@ -57,6 +57,5 @@
             </script>
     @endif
     @yield('scripts')
-
 </body>
 </html>

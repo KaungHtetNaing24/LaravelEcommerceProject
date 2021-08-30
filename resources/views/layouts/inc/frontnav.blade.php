@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="url {{ '/' }}">Home</a>
+          <a class="nav-link active" aria-current="page" href=" {{ url('/') }} ">Home</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -17,7 +17,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             @foreach($categories as $category)
             <li>
-              <a class="dropdown-item" href="#">{{ $category->name }}</a>
+              <a class="dropdown-item" href="{{ url('category/'.$category->slug) }}">{{ $category->name }}</a>
             </li>
             @endforeach
 

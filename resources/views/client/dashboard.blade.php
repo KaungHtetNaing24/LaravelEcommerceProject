@@ -17,6 +17,7 @@
                     @foreach($popular_products as $popular)
                         <div class="item mt-3">
                             <div class="card">
+                            <a href="{{ url('category/'.$popular->category->slug.'/'.$popular->slug) }}">
                                 <img src="{{ asset('storage/images/product/'. $popular->name . '/' . $popular->image) }}" style="height:250px;" alt="Product Image" class="image-fluid">
                                 <div class="card-body">
                                     <h5>{{ $popular->name }}</h5>
@@ -26,6 +27,7 @@
                                         <span class="float-end fw-light"> (-{{ $popular->discount }}%)</span>
                                     @endif()
                                 </div>
+                            </a>
                             </div>
                         </div>
                      @endforeach
@@ -41,6 +43,7 @@
                     @foreach($products as $product)
                         <div class="item mt-3">
                             <div class="card">
+                                <a href="{{ url('category/'.$product->category->slug.'/'.$product->slug) }}">
                                 <img src="{{ asset('storage/images/product/'. $product->name . '/' . $product->image) }}" style="height:250px;" alt="Product Image" class="image-fluid">
                                 <div class="card-body">
                                     <h5>{{ $product->name }}</h5>
@@ -51,6 +54,7 @@
                                     @endif()
                                     
                                 </div>
+                                </a>
                             </div>
                         </div>
                      @endforeach
