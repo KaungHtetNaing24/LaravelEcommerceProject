@@ -8,7 +8,10 @@
 
 <div class="py-3 shadow-sm bg-warning">
     <div class="container">
-        <h6 class="mt-5">Collection/ {{ $category->name }}</h6>
+        <h5 class="mt-5 tag">
+        <a href="{{ url('/') }}">Home</a>/
+            {{ $category->name }}
+        </h5>
     </div>
 </div>
 

@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +29,15 @@ Auth::routes();
 Route::get('/',[FrontendController::class, 'index']);
 Route::get('/category/{slug}',[FrontendController::class, 'viewcategory']);
 Route::get('/category/{cate_slug}/{prod_slug}',[FrontendController::class, 'productview']);
+
+Route::post('add-to-cart',[CartController::class, 'addProduct']);
+Route::post('delete-cart-item',[CartController::class,'deleteProduct']);
+Route::post('update-cart',[CartController::class, 'updatecart']);
+
+Route::group(['middleware'=>'auth'], function (){
+    Route::get('cart',[CartController::class,'viewCart']);
+    Route::get('checkout',[CheckoutController::class,'index']);
+});
 
 
 

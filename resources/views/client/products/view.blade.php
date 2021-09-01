@@ -8,12 +8,16 @@
 
 <div class="py-3 mb-4 shadow-sm bg-warning">
     <div class="container">
-        <h6 class="mt-5">Collection/ {{ $product->category->name }}/ {{ $product->name }}</h6>
+        <h5 class="mt-5 tag">
+            <a href="{{ url('/') }}">Home</a>/ 
+            <a href="{{ url('/category/'.$product->category->slug) }}">{{ $product->category->name }}</a>/ 
+            {{ $product->name }}
+        </h5>
     </div>
 </div>
     
 <div class="container">
-        <div class="uicard shadow mt-5">
+        <div class="uicard shadow mt-5 product_data">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-5">
@@ -42,21 +46,25 @@
                         <hr>
 
                         <div class="row mb-0 mt-5">
-                            <div class="col-md-2">
+                            <div class="col-md-3">
+                                <input type="hidden" value="{{ $product->id }}" class="prod_id">
+                                <input type="hidden" value="{{ $product->quantity }}" class="prod_qty">
                                 <label for="Quantity">Quantity</label>
                                 <div class="input-group text-center mt-3">
-                                    <span class="input-group-text">-</span>
-                                    <input type="text" name="quantity" value="1" class="form-control" />
-                                    <span class="input-group-text">+</span>
+                                    <button class="input-group-text decrement-btn">-</button>
+                                    <input type="text" name="quantity" class="form-control qty_input text-center" value="1"  />
+                                    <button class="input-group-text increasement-btn">+</button>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <br>
                                <p class="fs-6 mt-4">Only {{ $product->quantity }} items left</p> 
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-6">
                                 <br>
-                                <button class="btn btn-primary mt-3">Add to Cart</button>
+                                @if($product->quantity > 0)
+                                <button class="btn btn-primary mt-3 addToCartBtn">Add to Cart</button>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -65,3 +73,4 @@
         </div>
     </div>
 @endsection
+

@@ -1,3 +1,7 @@
+<?php
+ use App\Http\Controllers\Frontend\CartController;
+ $total = CartController::cartItem();
+?>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark shadow">
   <div class="container">
     <a class="navbar-brand" href="#">My Shop</a>
@@ -23,7 +27,7 @@
 
           </ul>
           <li class="nav-item">
-          <a class="nav-link" href="#">Cart</a>
+          <a class="nav-link" href="{{ url('/cart') }}">Cart&nbsp;<div class="badge bg-danger">{{ $total }}</div></a>
             </li>
         </li>
       </ul>
