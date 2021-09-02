@@ -26,9 +26,11 @@
             @endforeach
 
           </ul>
+          @if(Auth::check())
           <li class="nav-item">
           <a class="nav-link" href="{{ url('/cart') }}">Cart&nbsp;<div class="badge bg-danger">{{ $total }}</div></a>
             </li>
+            @endif
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">

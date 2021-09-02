@@ -17,6 +17,7 @@
     
 <div class="container my-5">
         <div class="uicard shadow">
+            @if($cartitems->count() > 0)
             <div class="card-body">
                 @php $total = 0; @endphp
                 @foreach($cartitems as $cartitem)
@@ -59,12 +60,22 @@
                 @endforeach
 
             </div>
+            
                 <div class="card-footer">
                         <h5 class="float-first">Total Price: {{ $total }} Ks</h5>
                         <div class="d-grid gap-2">
                         <a href="{{ url('checkout') }}" class="btn btn-success">Process to Checkout</a>
+                        <a href="{{ url('/') }}" class="btn btn-outline-secondary">Continue Shopping</a>
                         </div>
                 </div>
+            @else
+            <div class="card-body text-center">
+                <h2>Your cart is empty</h2><br>
+                <div class="d-grid gap-2">
+                <a href="{{ url('/') }}" class="btn btn-outline-secondary">Continue Shopping</a>
+                </div>
+            </div>
+            @endif
         </div>
     </div>
 @endsection
