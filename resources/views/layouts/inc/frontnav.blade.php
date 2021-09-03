@@ -30,6 +30,13 @@
           <li class="nav-item">
           <a class="nav-link" href="{{ url('/cart') }}">Cart&nbsp;<div class="badge bg-danger">{{ $total }}</div></a>
             </li>
+                  @foreach(Auth::user()->roles as $role)
+                    @if($role->name == 'Manager' || $role->name == 'Staff')
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ url('/admin/dashboard') }}">Administration</a>
+                    </li>
+                    @endif
+                  @endforeach
             @endif
         </li>
       </ul>
@@ -55,6 +62,10 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="#">
                                     My Profile
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ url('my-orders') }}">
+                                    My Orders
                                     </a>
                                 </li>
                                 <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

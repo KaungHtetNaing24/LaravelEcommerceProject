@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::paginate(5);
+        $products = Product::orderBy('created_at')->paginate(5);
         return view('admin.product.index',compact('products'));
     }
 
@@ -140,6 +140,16 @@ class ProductController extends Controller
 
             $products->delete();
             return redirect('admin/products')->with('status',"Product deleted successfully");
-    }        
+    }    
+    
+    static function productOutStock()
+    {
+        return Product::where('quantity','0')->count();
+    }
+
+    static function productItems()
+    {
+        return Product::where('quantity','>','0')->count();
+    }
 }
 

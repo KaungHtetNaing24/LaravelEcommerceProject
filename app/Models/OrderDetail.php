@@ -17,4 +17,15 @@ class OrderDetail extends Model
         'quantity',
         'price',
         ];
+
+        protected $primaryKey = 'id';
+
+        protected $keyType = 'string';
+    
+        public $incrementing = false;
+
+        public function products()
+        {
+            return $this->belongsTo(Product::class,'product_id','id');
+        }
 }

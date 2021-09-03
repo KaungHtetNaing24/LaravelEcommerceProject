@@ -51,7 +51,6 @@ class CheckoutController extends Controller
         $order->total_price = $total;
         $order->order_no = 'Autumn'.rand(1111,9999);
         $order->save();
-
         $cartitems = Cart::where('user_id', Auth::id())->get();
         
         foreach($cartitems as $item)

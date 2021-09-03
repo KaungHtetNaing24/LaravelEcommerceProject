@@ -14,7 +14,7 @@ class UserController extends Controller
     }
     
     public function index(){
-        $users = User::paginate(5);
+        $users = User::orderBy('name')->paginate(5);
         return view('admin.user.index',compact('users'));
     }
 
@@ -29,5 +29,10 @@ class UserController extends Controller
         $roleIds = $request->role_ids;
         $user->roles()->sync($roleIds);
         return redirect('admin/users');
+    }
+
+    static function userCount()
+    {
+        return User::all()->count();
     }
 }

@@ -53,8 +53,8 @@
                     </a>
                   </li>
                 </ul>
-          <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
+          <li class="nav-item {{ Request::is('admin/orders') ? 'active':'' }} || {{ Request::is('admin/order-history') ? 'active':'' }}">
+            <a class="nav-link" href="{{ url('admin/orders') }}">
               <i class="material-icons">bubble_chart</i>
               <p>Orders</p>
             </a>

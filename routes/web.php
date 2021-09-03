@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +40,10 @@ Route::group(['middleware'=>'auth'], function (){
     Route::get('cart',[CartController::class,'viewCart']);
     Route::get('checkout',[CheckoutController::class,'index']);
     Route::post('place-order',[CheckoutController::class,'placeorder']);
+
+    Route::get('my-orders',[UserController::class,'index']);
+    Route::get('view-order/{id}',[UserController::class,'view']);
+
 });
 
 
@@ -64,4 +70,9 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function (){
     Route::get('/products/{id}/edit', [ProductController::class, 'edit']);
     Route::put('/update-product/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}/delete', [ProductController::class, 'destroy']);
+    
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::get('/view-order/{id}', [OrderController::class, 'view']);
+    Route::put('/update-status/{id}', [OrderController::class, 'updateOrder']);
+    Route::get('/order-history', [OrderController::class, 'orderHistory']);
 });
