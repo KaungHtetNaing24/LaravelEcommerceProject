@@ -12,8 +12,8 @@ class FrontendController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $products = Product::take(10)->get();
-        $popular_products = Product::where('popular','1')->take(10)->get();
+        $products = Product::orderBy('created_at', 'desc')->take(10)->get();
+        $popular_products = Product::where('popular','1')->orderBy('created_at', 'desc')->take(10)->get();
         return view('client.dashboard',compact('popular_products','products','categories'));
     }
 

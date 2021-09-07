@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -46,7 +47,11 @@ Route::group(['middleware'=>'auth'], function (){
 
 });
 
-
+Route::get('/profile',[UserController::class,'viewProfile']);
+Route::get('/profile/edit',[UserController::class,'editProfile']);
+Route::put('/profile/edit/{id}',[UserController::class,'update']);
+Route::get('/profile/change-password',[UserController::class,'changePassword']);
+Route::post('/profile/update-password',[UserController::class,'updatePassword']);
 
 
 Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function (){
@@ -63,13 +68,14 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function (){
     Route::get('/categories/{id}/edit',[CategoryController::class,'edit']);
     Route::put('/update-category/{id}',[CategoryController::class,'update']);
     Route::delete('/categories/{id}/delete',[CategoryController::class,'destroy']);
-
+    
     Route::get('/products', [ProductController::class, 'index']);
     Route::get('/add-product', [ProductController::class, 'add']);
     Route::post('/insert-product', [ProductController::class, 'insert']);
     Route::get('/products/{id}/edit', [ProductController::class, 'edit']);
     Route::put('/update-product/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}/delete', [ProductController::class, 'destroy']);
+    Route::get('/search', [ProductController::class, 'search']);
     
     Route::get('/orders', [OrderController::class, 'index']);
     Route::get('/view-order/{id}', [OrderController::class, 'view']);

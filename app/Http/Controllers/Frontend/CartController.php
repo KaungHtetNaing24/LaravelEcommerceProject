@@ -29,7 +29,7 @@ class CartController extends Controller
             {
                 if(Cart::where('product_id',$product_id)->where('user_id',Auth::id())->exists())
                 {
-                    return response()->json(['status' => $prod_check->name." already exist in your cart"]);
+                    return response()->json(['warn' => $prod_check->name." already exist in your cart"]);
                 }
                 else{
                     // $prod = $prod_check->quantity - $product_qty;
@@ -48,7 +48,7 @@ class CartController extends Controller
         }
         else
         {
-            return response()->json(['status' => " Please Login to Continue..."]);
+            return response()->json(['warn' => " Please Login to Continue..."]);
         }
     }
 

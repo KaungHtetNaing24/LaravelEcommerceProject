@@ -31,6 +31,7 @@
         @include('layouts.inc.sidebar')
         <div class="main-panel">
             @include('layouts.inc.adminnav')
+            @yield('nav')
             <div class="content">
                 @yield('content')
             </div>

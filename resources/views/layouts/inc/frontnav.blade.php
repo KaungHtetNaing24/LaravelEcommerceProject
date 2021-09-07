@@ -40,6 +40,10 @@
             @endif
         </li>
       </ul>
+      <form class="d-flex w-50 ms-auto">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-light" type="submit">Search</button>
+      </form>
       <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
@@ -60,7 +64,7 @@
                                     {{ Auth::user()->name }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">
+                                <li><a class="dropdown-item" href="{{ url('profile') }}">
                                     My Profile
                                     </a>
                                 </li>

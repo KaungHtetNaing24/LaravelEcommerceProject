@@ -12,7 +12,7 @@ class ManagerController extends Controller
         $this->middleware('isManagerOrStaff');
     }
     public function index(){
-        $orders = Order::where('status','0')->paginate(3);
+        $orders = Order::where('status','0')->orderBy('created_at', 'desc')->paginate(3);
         return view ('admin.index',compact('orders'));
     }
 }

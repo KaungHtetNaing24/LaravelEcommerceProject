@@ -12,7 +12,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::orderBy('created_at')->paginate(5);
+        $products = Product::orderBy('created_at', 'desc')->paginate(5);
         return view('admin.product.index',compact('products'));
     }
 
@@ -28,7 +28,7 @@ class ProductController extends Controller
         
         $request->validate([
             'category_id' => 'required',
-            'name' => 'required',
+            'name' => 'required|unique:product,name',
             'slug' => 'required',          
             'description' => 'required',
             'quantity' => 'required',
@@ -84,7 +84,7 @@ class ProductController extends Controller
         
         $request->validate([
             'category_id' => 'required',
-            'name' => 'required',
+            'name' => 'required|unique:product,name',
             'slug' => 'required',          
             'description' => 'required',
             'quantity' => 'required',
@@ -150,6 +150,18 @@ class ProductController extends Controller
     static function productItems()
     {
         return Product::where('quantity','>','0')->count();
+    }
+
+    public function search(Request $request)
+    {
+        $prod = Product::all();
+        $search_product = request()->query('search');
+        if($search_product){
+            $products = Product::where('name','LIKE',"%{$search_product}%")->with('category')->simplePaginate(3);
+        }else{
+            $products = Product::simplePaginate(3);
+        }
+        return view('admin.product.search',compact('products'));
     }
 }
 

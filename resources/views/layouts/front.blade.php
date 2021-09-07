@@ -60,6 +60,30 @@
                 // swal("{{ session('status') }}");
             </script>
     @endif
+    @if(session('error'))
+            <script>
+                Swal.fire({
+                    position: 'top',
+                    text:("{{ session('error') }}"),
+                    icon: "error",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    })
+                // swal("{{ session('status') }}");
+            </script>
+    @endif
+    @if(session('warn'))
+            <script>
+                Swal.fire({
+                    position: 'top',
+                    text:("{{ session('warn') }}"),
+                    icon: "warning",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    })
+                // swal("{{ session('status') }}");
+            </script>
+    @endif
     @yield('scripts')
 
 </body>

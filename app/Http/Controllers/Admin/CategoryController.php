@@ -22,7 +22,7 @@ class CategoryController extends Controller
     public function insert(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:categories,name',
             'slug' => 'required',          
             'description' => 'required',
         ]);
@@ -46,7 +46,7 @@ class CategoryController extends Controller
     {
         
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:categories,name',
             'slug' => 'required',          
             'description' => 'required',
         ]);
