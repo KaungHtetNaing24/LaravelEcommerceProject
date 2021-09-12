@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    //     public function __construct()
-    // {
-    //     $this->middleware('isNormalUser');
-    // }
-
     public function addProduct(Request $request)
     {
         $product_id = $request->input('product_id');
@@ -32,13 +27,10 @@ class CartController extends Controller
                     return response()->json(['warn' => $prod_check->name." already exist in your cart"]);
                 }
                 else{
-                    // $prod = $prod_check->quantity - $product_qty;
                     $cartItem = new Cart();
                     $cartItem->product_id = $product_id;
                     $cartItem->user_id = Auth::id();
                     $cartItem->product_quantity= $product_qty;
-                    // $prod_check->quantity = $prod;
-                    // $prod_check->update();
                     $cartItem->save();
                     return response()->json(['status' => $prod_check->name." added to cart"]);
                     
@@ -65,15 +57,10 @@ class CartController extends Controller
         if(Auth::check())
         {
             $prod_id = $request->input('prod_id');
-            // $prod_check = Product::where('id',$prod_id)->first();
             
             if(Cart::where('product_id',$prod_id)->where('user_id', Auth::id())->exists())
             {
                 $cartItem = Cart::where('product_id',$prod_id)->where('user_id', Auth::id())->first();
-                // $cartQty = $cartItem->product_quantity;
-                // $prod = $prod_check->quantity + $cartQty;
-                // $prod_check->quantity = $prod;
-                // $prod_check->update();
                 $cartItem->delete();
                 return response()->json(['status' => " Product removed successfully..."]);
             }
@@ -91,15 +78,11 @@ class CartController extends Controller
 
         if(Auth::check())
         {
-            // $prod_check = Product::where('id',$product_id)->first();
             if(Cart::where('product_id',$product_id)->where('user_id', Auth::id())->exists())
             {
                 $cart = Cart::where('product_id',$product_id)->where('user_id', Auth::id())->first();
-                // $prod = $prod_check->quantity + $cart->product_quantity;
                 $cart->product_quantity = $product_qty;
-                // $prod_check->quantity = $prod - $cart->product_quantity;
                 $cart->update();
-                // $prod_check->update();
                 return response()->json(['status' => " Product quantity updated..."]);
             }
 

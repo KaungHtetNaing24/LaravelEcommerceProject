@@ -35,4 +35,15 @@ class UserController extends Controller
     {
         return User::all()->count();
     }
+
+    public function search(Request $request)
+    {
+        $search_user = request()->query('search');
+        if($search_user){
+            $users = User::where('name','LIKE',"%{$search_user}%")->orwhere('phone_no','LIKE',"%{$search_user}%")->simplePaginate(3);
+        }else{
+            $users = User::simplePaginate(3);
+        }
+        return view('admin.user.search',compact('users'));
+    }
 }

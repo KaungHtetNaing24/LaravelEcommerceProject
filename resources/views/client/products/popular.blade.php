@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('title')
-    {{ $category->name }}
+    Products
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
     <div class="container">
         <h5 class="mt-5 tag">
         <a href="{{ url('/') }}">Home</a>/
-            {{ $category->name }}
+            Popular products
         </h5>
     </div>
 </div>
@@ -18,13 +18,14 @@
 <div class="py-5">
         <div class="container">
             <div class="row">
-                <h2>{{ $category->name }}</h2><br>
-                <p>{{ $category->description }}</p>
-                <hr>
-                    @foreach($products as $product)
+            @if ($popular_products->isEmpty())
+               <h4> No item found...</h4>
+            @else
+            <h4>Popular products</h4>
+            @foreach($popular_products as $product)
                         <div class="col-md-3 mt-3">
                             <div class="card">
-                            <a href="{{ url('category/'.$category->slug.'/'.$product->slug) }}">
+                            <a href="{{ url('category/'.$product->category->slug.'/'.$product->slug) }}">
                                 <img src="{{ asset('storage/images/product/'. $product->name . '/' . $product->image) }}" alt="Product Image" class="image-fluid">
                                 <div class="card-body">
                                     <h5>{{ $product->name }}</h5>
@@ -38,6 +39,7 @@
                             </div>
                         </div>
                      @endforeach
+            @endif
             </div>
         </div>
 </div>

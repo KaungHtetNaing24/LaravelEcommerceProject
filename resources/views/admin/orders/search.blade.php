@@ -60,9 +60,7 @@
         <div class="col-md-12">
         <div class="card">
                 <div class="card-header bg-primary">
-                    <h4 class='text-white'>New Orders
-                        <a href="{{ 'order-history' }}" class="btn btn-sm btn-warning float-right">Order history</a>
-                    </h4>
+                    <h4 class='text-white'>New Orders</h4>
                 </div>
                 <div class="card-body">
                 <table class="table table-bordered">

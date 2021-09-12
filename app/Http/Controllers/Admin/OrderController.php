@@ -38,4 +38,15 @@ class OrderController extends Controller
     {
         return Order::where('status','0')->count();
     }
+
+    public function search(Request $request)
+    {
+        $search_order = request()->query('search');
+        if($search_order){
+            $orders = Order::where('order_no','LIKE',"%{$search_order}%")->simplePaginate(3);
+        }else{
+            $orders = Order::simplePaginate(3);
+        }
+        return view('admin.orders.search',compact('orders'));
+    }
 }

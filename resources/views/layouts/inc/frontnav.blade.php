@@ -40,8 +40,8 @@
             @endif
         </li>
       </ul>
-      <form class="d-flex w-50 ms-auto">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="d-flex ms-auto searchbar" action="{{ url('search') }}" method="GET">
+        <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-light" type="submit">Search</button>
       </form>
       <ul class="navbar-nav ms-auto">

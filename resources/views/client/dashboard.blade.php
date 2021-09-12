@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4>Popular Items<a href="" class="btn btn-primary float-end">Shop more</a></h4>
+                    <h4>Popular Items<a href="{{ url('popular-products') }}" class="btn btn-primary float-end">Shop more</a></h4>
                     
                 </div>
                 <div class="owl-carousel popular-carousel owl-theme">
@@ -18,7 +18,7 @@
                         <div class="item mt-3">
                             <div class="card">
                             <a href="{{ url('category/'.$popular->category->slug.'/'.$popular->slug) }}">
-                                <img src="{{ asset('storage/images/product/'. $popular->name . '/' . $popular->image) }}" style="height:250px;" alt="Product Image" class="image-fluid">
+                                <img src="{{ asset('storage/images/product/'. $popular->name . '/' . $popular->image) }}" alt="Product Image" class="image-fluid">
                                 <div class="card-body">
                                     <h5>{{ $popular->name }}</h5>
                                     <span class="float-first fs-5 fw-bold">{{ $popular->final_price }} Ks</span>
@@ -36,7 +36,7 @@
                 
                 
                 <div class="col-md-12">
-                    <h4>Feature Items<a href="" class="btn btn-primary float-end">Shop more</a></h4>
+                    <h4>Feature Items<a href="{{ url('all-products') }}" class="btn btn-primary float-end">Shop more</a></h4>
                     
                 </div>
                 <div class="owl-carousel popular-carousel owl-theme">
@@ -44,7 +44,7 @@
                         <div class="item mt-3">
                             <div class="card">
                                 <a href="{{ url('category/'.$product->category->slug.'/'.$product->slug) }}">
-                                <img src="{{ asset('storage/images/product/'. $product->name . '/' . $product->image) }}" style="height:250px;" alt="Product Image" class="image-fluid">
+                                <img src="{{ asset('storage/images/product/'. $product->name . '/' . $product->image) }}"  alt="Product Image" class="image-fluid">
                                 <div class="card-body">
                                     <h5>{{ $product->name }}</h5>
                                     <span class="float-first fs-5 fw-bold">{{ $product->final_price }} Ks</span>

@@ -46,7 +46,7 @@ class CategoryController extends Controller
     {
         
         $request->validate([
-            'name' => 'required|unique:categories,name',
+            'name' => 'required|unique:categories,name,'.$id,
             'slug' => 'required',          
             'description' => 'required',
         ]);
@@ -65,5 +65,16 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
         return redirect('admin/categories')->with('status',"Category Deleted Successfully");
+    }
+
+    public function search(Request $request)
+    {
+        $search_cate = request()->query('search');
+        if($search_cate){
+            $categories = Category::where('name','LIKE',"%{$search_cate}%")->simplePaginate(3);
+        }else{
+            $categories = Category::simplePaginate(3);
+        }
+        return view('admin.category.search',compact('categories'));
     }
 }

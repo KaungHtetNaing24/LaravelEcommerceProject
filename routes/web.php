@@ -32,6 +32,9 @@ Auth::routes();
 Route::get('/',[FrontendController::class, 'index']);
 Route::get('/category/{slug}',[FrontendController::class, 'viewcategory']);
 Route::get('/category/{cate_slug}/{prod_slug}',[FrontendController::class, 'productview']);
+Route::get('/search',[FrontendController::class,'searchProduct']);
+Route::get('/popular-products',[FrontendController::class,'popularProducts']);
+Route::get('/all-products',[FrontendController::class,'allProducts']);
 
 Route::post('add-to-cart',[CartController::class, 'addProduct']);
 Route::post('delete-cart-item',[CartController::class,'deleteProduct']);
@@ -58,6 +61,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function (){
     Route::get('/users','UserController@index');
     Route::get('/users/{id}/edit','UserController@edit');
     Route::post('/users/{id}/add-role','UserController@addRole');
+    Route::get('/user-search', 'UserController@search');
     
     Route::get('/dashboard','ManagerController@index');
     // Route::get('/dashboard','StaffController@index');
@@ -68,6 +72,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function (){
     Route::get('/categories/{id}/edit',[CategoryController::class,'edit']);
     Route::put('/update-category/{id}',[CategoryController::class,'update']);
     Route::delete('/categories/{id}/delete',[CategoryController::class,'destroy']);
+    Route::get('/cate-search',[CategoryController::class,'search']);
     
     Route::get('/products', [ProductController::class, 'index']);
     Route::get('/add-product', [ProductController::class, 'add']);
@@ -75,10 +80,11 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function (){
     Route::get('/products/{id}/edit', [ProductController::class, 'edit']);
     Route::put('/update-product/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}/delete', [ProductController::class, 'destroy']);
-    Route::get('/search', [ProductController::class, 'search']);
+    Route::get('/prod-search', [ProductController::class, 'search']);
     
     Route::get('/orders', [OrderController::class, 'index']);
     Route::get('/view-order/{id}', [OrderController::class, 'view']);
     Route::put('/update-status/{id}', [OrderController::class, 'updateOrder']);
     Route::get('/order-history', [OrderController::class, 'orderHistory']);
+    Route::get('/order-search', [OrderController::class, 'search']);
 });

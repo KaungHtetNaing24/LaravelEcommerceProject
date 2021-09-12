@@ -52,6 +52,33 @@ class FrontendController extends Controller
             return redirect('/')->with('status',"No category found");
         }
     }
+
+    public function searchProduct()
+    {
+        $categories = Category::all();
+        $prod = Product::all();
+        $search_product = request()->query('search');
+        if($search_product){
+            $products = Product::where('name','LIKE',"%{$search_product}%")->with('category')->simplePaginate(8);
+        }else{
+            $products = Product::simplePaginate(3);
+        }
+        return view('client.products.search',compact('products','categories'));
+    }
+
+    public function popularProducts()
+    {
+        $categories = Category::all();
+        $popular_products = Product::where('popular','1')->orderBy('created_at', 'desc')->get();
+        return view('client.products.popular',compact('popular_products','categories'));
+    }
+
+    public function allProducts()
+    {
+        $categories = Category::all();
+        $products = Product::orderBy('created_at', 'desc')->get();
+        return view('client.products.viewall',compact('products','categories'));
+    }
 }
 
 
