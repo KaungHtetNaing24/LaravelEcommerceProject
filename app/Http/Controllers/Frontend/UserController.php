@@ -46,7 +46,7 @@ class UserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => 'required|unique:users,email,'.$id,
-            'phone_no' => 'required|unique:users,phone_no,'.$id,
+            'phone_no' => ['required', 'string','max:11','regex:/^((09|\\+?950?9|\\+?95950?9)\\d{7,9})$/','unique:users,phone_no,'.$id],
             'address' => ['required', 'string', 'max:255'],      
         ]);
 

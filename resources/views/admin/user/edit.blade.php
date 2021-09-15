@@ -108,7 +108,12 @@
                 }
                 if(hasChecked == false)
                 {
-                    alert("Please select at least one role");
+                  Swal.fire({
+                    position: 'top',
+                    icon:"warning",
+                    text:"Please select at least one role.",
+                    showConfirmButton: true,
+                    })
                     return false;
                 }
                 return true;

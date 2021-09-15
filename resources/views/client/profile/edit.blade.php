@@ -85,7 +85,11 @@
                         <div class="form-group row">
                         <div class="col-md-4"></div>
                             <div class="col-md-6">
+                                @if(Auth::user()->image)
                                 <img id="previewImg" src="{{ asset('storage/images/profile/'. Auth::user()->name . '/' . Auth::user()->image) }}" alt="Product image" style="max-width:150px;width:100%;height:auto;"/>
+                                @else
+                                <img id="previewImg" src="{{ asset('image/profile/profile.png') }}" alt="Product image" style="max-width:150px;width:100%;height:auto;"/>
+                                @endif
                             </div>
                         </div><br>
 

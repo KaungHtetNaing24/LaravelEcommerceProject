@@ -79,7 +79,11 @@
                             <tbody>
                                 @foreach($users as $user)
                                 <tr>
+                                    @if($user->image)
                                     <td><img src="{{ asset('storage/images/profile/'.$user->name. '/' .$user->image) }}" style="max-width:100px;width:100%;height:auto;" alt="Image"></td>
+                                    @else
+                                    <td><img src="{{ asset('image/profile/profile.png') }}" style="max-width:100px;width:100%;height:auto;" alt="Image"></td>
+                                    @endif
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->phone_no }}</td>

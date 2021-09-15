@@ -19,7 +19,8 @@
         <form action="{{ url('place-order') }}" method="POST">
             @csrf
         <div class="row">
-            <div class="col-md-7">
+        <h4>Checkout page</h4>
+            <div class="col-md-7 py-3">
                 <div class="uicard">
                     <div class="card-body">
                         <h6>Basic Details</h6><hr><br>
@@ -52,7 +53,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5 py-3">
                 <div class="uicard">
                     @if($cartitems->count() > 0)
                     <div class="card-body">
@@ -64,6 +65,7 @@
                                    <th>Name</th>
                                    <th>Price</th>
                                    <th>Quantity</th>
+                                   <th>Sub total</th>
                                </tr>
                            </thead>
                            <tbody>
@@ -71,10 +73,10 @@
                            @foreach($cartitems as $item)
                                <tr>
                                     <td>{{ $item->products->name }}</td>
-                                    <td>{{ $item->products->final_price }}</td>
+                                    <td>{{ $item->products->final_price }} Ks</td>
                                     <td>{{ $item->product_quantity }}</td>
-                                
-                               </tr>
+                                    <td>{{ $item->product_quantity * $item->products->final_price}} Ks</td>
+                                </tr>
                                @php $total += $item->products->final_price * $item->product_quantity; @endphp
                                @endforeach
                            </tbody>

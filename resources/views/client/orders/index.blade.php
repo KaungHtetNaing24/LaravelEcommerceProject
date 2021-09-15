@@ -17,6 +17,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="uicard">
+                    @if($orders->count()>0)
                     <div class="card-header bg-primary">
                         <h4 class="text-light">My Orders</h4>
                     </div>
@@ -44,8 +45,16 @@
                         </tr>
                         @endforeach
                     </tbody>
-                </table>
+                    </table>
                     </div>
+                    @else
+                    <div class="card-body text-center">
+                        <h2>You have no order yet.</h2><br>
+                        <div class="d-grid gap-2">
+                        <a href="{{ url('/') }}" class="btn btn-outline-secondary">Continue Shopping</a>
+                        </div>
+                    </div>
+                    @endif
                 </div>
                 
             </div>

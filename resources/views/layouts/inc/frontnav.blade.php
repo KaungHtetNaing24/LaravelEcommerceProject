@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href=" {{ url('/') }} ">Home</a>
+          <a class="nav-link {{ Request::is('/') ? 'active':'' }}" aria-current="page" href=" {{ url('/') }} ">Home</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -28,7 +28,14 @@
           </ul>
           @if(Auth::check())
           <li class="nav-item">
-          <a class="nav-link" href="{{ url('/cart') }}">Cart&nbsp;<div class="badge bg-danger">{{ $total }}</div></a>
+          <a class="nav-link {{ Request::is('cart') ? 'active':'' }}" aria-current="page" href="{{ url('/cart') }}">
+           @if($total > 0)
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          <div class="badge bg-danger">{{ $total }}</div>
+          @else
+          Cart<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          @endif
+          </a>
             </li>
                   @foreach(Auth::user()->roles as $role)
                     @if($role->name == 'Manager' || $role->name == 'Staff')
@@ -65,15 +72,15 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="{{ url('profile') }}">
-                                    My Profile
+                                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;My Profile
                                     </a>
                                 </li>
                                 <li><a class="dropdown-item" href="{{ url('my-orders') }}">
-                                    My Orders
+                                <i class="fa fa-history" aria-hidden="true"></i></i>&nbsp;&nbsp;My Orders
                                     </a>
                                 </li>
                                 <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;{{ __('Logout') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

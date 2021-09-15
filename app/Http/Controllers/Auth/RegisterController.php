@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone_no' => ['required', 'string','max:11','unique:users'],
+            'phone_no' => ['required', 'string','max:11','regex:/^((09|\\+?950?9|\\+?95950?9)\\d{7,9})$/','unique:users'],
             'address' => ['required', 'string', 'max:255'],
             
         ]);
@@ -78,7 +78,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'phone_no' => $data['phone_no'],
             'address' => $data['address'],
-            'image' => $data['image'],
+            
             
         ]);
 
@@ -88,10 +88,6 @@ class RegisterController extends Controller
             $file = request()->file('image')->getClientOriginalName();
             request()->file('image')->storeAs($destination_path,$user->name. '/' .$file,'');
             $user->update(['image' => $file]);
-            
-         
-        }else{
-            return 'no file selected';
         }
 
 

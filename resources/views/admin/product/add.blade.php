@@ -108,18 +108,21 @@
                             @enderror
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="">Original Price</label>
+                            <label for="">Original Price(Ks)</label>
                             <input type="number" class="form-control @error('original_price') is-invalid @enderror" id="original_price" value="{{ old('original_price') }}" name="original_price">
                             @error('original_price')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="">Discount</label>
-                            <input type="number" class="form-control" id="discount" value="{{ old('discount') }}" name="discount">
+                            <label for="">Discount(%)</label>
+                            <input type="number" class="form-control @error('discount') is-invalid @enderror" id="discount" value="{{ old('discount') }}" name="discount">
+                            @error('discount')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="">Selling Price</label>
+                            <label for="">Selling Price(Ks)</label>
                             <input type="number" class="form-control @error('final_price') is-invalid @enderror" id="final_price" value="{{ old('final_price') }}" name="final_price">
                             @error('final_price')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -132,7 +135,7 @@
                         </div>
                         
                         <div class="col-md-12 mb-3">
-                        <img id="previewImg" src="{{ asset('storage/images/product/product-image.jpg') }}" alt="Product image" style="max-width:150px;width:100%;height:auto;"/>
+                        <img id="previewImg" src="{{ asset('image/product/product-image.jpg') }}" alt="Product image" style="max-width:150px;width:100%;height:auto;"/>
                         </div>
                         
                         

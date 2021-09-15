@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-md-3 my-auto">
                     <br>
-                        <h4 class="mb=0">{{ $cartitem->products->name  }}</h4>
+                        <h5 class="mb=0">{{ $cartitem->products->name  }}</h5>
                     </div>
                     <div class="col-md-2 my-auto">
                     <br>
@@ -70,7 +70,7 @@
                 </div>
             @else
             <div class="card-body text-center">
-                <h2>Your cart is empty</h2><br>
+                <h2><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;Your cart is empty&nbsp;<i class="fa fa-shopping-cart" aria-hidden="true"></i></h2><br>
                 <div class="d-grid gap-2">
                 <a href="{{ url('/') }}" class="btn btn-outline-secondary">Continue Shopping</a>
                 </div>

@@ -25,6 +25,9 @@ $('.addToCartBtn').click(function (e){
                     text:(response.status),
                     showConfirmButton: false,
                     })
+            setTimeout(function(){// wait for 5 secs(2)
+                        window.location = '/'; // then reload the page.(3)
+            },1500); 
             }else{
                 Swal.fire({
                     position: 'top',
@@ -32,14 +35,10 @@ $('.addToCartBtn').click(function (e){
                     text:(response.warn),
                     showConfirmButton: false,
                     })
-            }
-
-
             setTimeout(function(){// wait for 5 secs(2)
-                window.location.reload(); // then reload the page.(3)
-           },1500); 
-            
-            
+                window.location.reload();; // then reload the page.(3)
+            },1500); 
+            }
         }
     });
 });

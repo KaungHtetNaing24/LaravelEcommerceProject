@@ -5,15 +5,22 @@
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item">
-      <img src="{{ asset('storage/images/product/Slider-img.jpg') }}" class="d-block w-100"  alt="...">  
-    </div>
-    <div class="carousel-item">
-      <img src="{{ asset('storage/images/product/Slider-img2.jpg') }}" class="d-block w-100"  alt="...">
-    </div>
     <div class="carousel-item active">
-      <img src="{{ asset('storage/images/product/Slider-img3.jpg') }}" class="d-block w-100"  alt="...">
+    <a href="{{ url('all-products') }}">
+      <img src="{{ asset('image/product/Slider-img3.jpg') }}" class="d-block w-100"  alt="..."> 
+    </a>
     </div>
+    <div class="carousel-item">
+    <a href="{{ url('all-products') }}">
+      <img src="{{ asset('image/product/Slider-img2.jpg') }}" class="d-block w-100"  alt="...">
+    </a>
+    </div>
+    <div class="carousel-item">
+    <a href="{{ url('all-products') }}">
+      <img src="{{ asset('image/product/Slider-img.jpg') }}" class="d-block w-100"  alt="...">
+    </a>
+    </div>
+    
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

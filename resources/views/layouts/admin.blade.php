@@ -30,7 +30,6 @@
     <div class="wrapper">
         @include('layouts.inc.sidebar')
         <div class="main-panel">
-            <!-- @include('layouts.inc.adminnav') -->
             @yield('nav')
             <div class="content">
                 @yield('content')
@@ -46,7 +45,6 @@
         <script src="{{ asset('admin/js/jquery.bootstrap-wizard.js') }}"></script>
         <script src="{{ asset('admin/js/material-dashboard.js?v=2.1.2') }}" type="text/javascripts"></script>
         
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if(session('status'))
             <script>
@@ -55,9 +53,8 @@
                     text:("{{ session('status') }}"),
                     icon: "success",
                     showConfirmButton: false,
-                    timer: 1500,
+                    timer: 2500,
                     })
-                // swal("{{ session('status') }}");
             </script>
     @endif
     @yield('scripts')

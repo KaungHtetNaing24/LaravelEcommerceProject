@@ -24,7 +24,11 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4 d-flex justify-content-center">
+                            @if(Auth::user()->image)
                             <img src="{{ asset('storage/images/profile/'. Auth::user()->name . '/' . Auth::user()->image) }}" alt="Image" class="img-fluid" style="clip-path: circle();width: 300px;">
+                            @else
+                            <img src="{{ asset('image/profile/profile.png') }}" alt="Image" class="img-fluid" style="clip-path: circle();width: 300px;">
+                            @endif
                             <hr><br>
                         </div>
                         <div class="col-md-8 p-4">

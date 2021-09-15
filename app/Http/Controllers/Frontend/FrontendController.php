@@ -13,8 +13,9 @@ class FrontendController extends Controller
     {
         $categories = Category::all();
         $products = Product::orderBy('created_at', 'desc')->take(10)->get();
+        $cateprod = Product::orderBy('created_at', 'desc')->get();
         $popular_products = Product::where('popular','1')->orderBy('created_at', 'desc')->take(10)->get();
-        return view('client.dashboard',compact('popular_products','products','categories'));
+        return view('client.dashboard',compact('popular_products','products','categories','cateprod'));
     }
 
     public function viewcategory($slug)

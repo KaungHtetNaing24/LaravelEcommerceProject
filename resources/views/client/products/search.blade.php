@@ -19,7 +19,12 @@
         <div class="container">
             <div class="row">
             @if ($products->isEmpty())
-               <h4> No item found...</h4>
+            <div class="card-body text-center bg-light">
+                <h2>No item found.</h2><br>
+                <div class="d-grid gap-2">
+                <a href="{{ url('/') }}" class="btn btn-outline-secondary">Continue Shopping</a>
+                </div>
+            </div>
             @else
             @foreach($products as $product)
                         <div class="col-md-3 mt-3">

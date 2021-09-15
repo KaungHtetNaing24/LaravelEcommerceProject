@@ -28,18 +28,18 @@
 
  */
 
- (function() {
-  isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
+//  (function() {
+//   isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
 
-  if (isWindows) {
-    // if we are on windows OS we activate the perfectScrollbar function
-    $('.sidebar .sidebar-wrapper, .main-panel, .main').perfectScrollbar();
+//   if (isWindows) {
+//     // if we are on windows OS we activate the perfectScrollbar function
+//     $('.sidebar .sidebar-wrapper, .main-panel, .main').perfectScrollbar();
 
-    $('html').addClass('perfect-scrollbar-on');
-  } else {
-    $('html').addClass('perfect-scrollbar-off');
-  }
-})();
+//     $('html').addClass('perfect-scrollbar-on');
+//   } else {
+//     $('html').addClass('perfect-scrollbar-off');
+//   }
+// })();
 
 
 var breakCards = true;
@@ -63,8 +63,6 @@ var seq2 = 0,
   durations2 = 500;
 
 $(document).ready(function() {
-
-  $('body').bootstrapMaterialDesign();
 
   $sidebar = $('.sidebar');
 

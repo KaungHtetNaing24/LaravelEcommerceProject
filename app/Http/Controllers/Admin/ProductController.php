@@ -33,7 +33,7 @@ class ProductController extends Controller
             'description' => 'required',
             'quantity' => 'required',
             'original_price' => 'required',
-            'discount' => 'required',
+            'discount' => 'required|integer|between:0,100',
             'final_price' => 'required',
             'image' => 'required',
             
@@ -89,7 +89,7 @@ class ProductController extends Controller
             'description' => 'required',
             'quantity' => 'required',
             'original_price' => 'required',
-            'discount' => 'required',
+            'discount' => 'required|integer|between:0,100',
             'final_price' => 'required',
             
             

@@ -95,7 +95,7 @@
                         <div class="form-group row">
                         <div class="col-md-4"></div>
                             <div class="col-md-6">
-                                <img id="previewImg" src="{{ asset('storage/images/profile/profile.png') }}" alt="Product image" style="max-width:150px;width:100%;height:auto;"/>
+                                <img id="previewImg" src="{{ asset('image/profile/profile.png') }}" alt="Product image" style="max-width:150px;width:100%;height:auto;"/>
                             </div>
                         </div>
 

@@ -58,12 +58,18 @@
                             </div>
                             <div class="col-md-3">
                                 <br>
-                               <p class="fs-6 mt-4">Only {{ $product->quantity }} items left</p> 
+                                @if($product->quantity > 0 && $product->quantity <= 10)
+                               <p class="fs-6 mt-4">Only {{ $product->quantity }} items left</p>
+                                @elseif($product->quantity > 10) 
+                                <p class="fs-6 mt-4">Available</p>
+                                @elseif($product->quantity == 0)
+                                <label class="badge bg-danger float-end fs-6 mt-4">Out of stock</label>
+                                @endif
                             </div>
                             <div class="col-md-6">
                                 <br>
                                 @if($product->quantity > 0)
-                                <button class="btn btn-primary mt-3 addToCartBtn">Add to Cart</button>
+                                <button class="btn btn-primary mt-3 addToCartBtn">Add to Cart&nbsp;<i class="fa fa-cart-plus" aria-hidden="true"></i></button>
                                 @endif
                             </div>
                         </div>
