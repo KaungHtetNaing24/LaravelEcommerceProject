@@ -25,7 +25,14 @@
               </div>
             </form>
             <ul class="navbar-nav">
-
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/') }}">
+                  <i class="material-icons" title="User dashboard">dashboard</i>
+                  <p class="d-lg-none d-md-block">
+                    User Dashboard
+                  </p>
+                </a>
+              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
@@ -133,11 +140,18 @@
                         </div>
 
                         <div class="col-md-12 mb-3">
-                        <img id="previewImg" src="{{ asset('storage/images/product/'. $product->name . '/' . $product->image) }}" alt="Product image" style="max-width:250px;"/>
+                          @if($product->image)
+                        <img id="previewImg" src="{{ asset('storage/images/product/'. $product->id . '/' . $product->image) }}" alt="Product image" style="max-width:250px;"/>
+                        @else
+                        <img id="previewImg" src="{{ asset('image/product/default-image.jpg') }}" alt="Product image" style="max-width:250px;"/>
+                        @endif
                         </div>
                         
                         <div class="col-md-12 mb-3">
-                            <input type="file" name="image" class="form-control" onchange="previewFile(this)">
+                        <input type="file" name="image" accept="image/*" class="form-control @error('image') is-invalid @enderror" onchange="previewFile(this)" id="image">
+                            @error('image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         
                         

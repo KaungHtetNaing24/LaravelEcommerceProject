@@ -19,20 +19,20 @@
         <div class="col-md-12">
             <div class="uicard">
                 <div class="card-header bg-primary">
-                    <h3 class="text-light">My Profile</h3>
+                    <h3 class="text-light"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;My Profile</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4 d-flex justify-content-center">
                             @if(Auth::user()->image)
-                            <img src="{{ asset('storage/images/profile/'. Auth::user()->name . '/' . Auth::user()->image) }}" alt="Image" class="img-fluid" style="clip-path: circle();width: 300px;">
+                            <img src="{{ asset('storage/images/profile/'. Auth::user()->id . '/' . Auth::user()->image) }}" alt="Image" class="img-fluid" style="clip-path: circle();width: 300px;">
                             @else
                             <img src="{{ asset('image/profile/profile.png') }}" alt="Image" class="img-fluid" style="clip-path: circle();width: 300px;">
                             @endif
                             <hr><br>
                         </div>
                         <div class="col-md-8 p-4">
-                            <h4>Information</h4><hr>
+                            <h4>Information&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i></h4><hr>
                             <div class="row">
                                 <div class="col-md-6">
                                     <h4>Name</h4>
@@ -56,8 +56,8 @@
                             </div><br>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <a href="{{ url('profile/edit') }}" class="btn btn-warning">Edit Profile</a>
-                                    <a href="{{ url('profile/change-password') }}" class="btn btn-success">Change Password</a>
+                                    <a href="{{ url('profile/edit') }}" class="btn btn-warning">Edit Profile&nbsp;<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                    <a href="{{ url('profile/change-password') }}" class="btn btn-success">Change Password&nbsp;<i class="fa fa-unlock-alt" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>

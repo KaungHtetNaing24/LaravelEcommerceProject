@@ -19,9 +19,10 @@
         <div class="col-md-8">
             <div class="uicard">
                 
-
+        <div class="card-header bg-primary text-light">
+            <h4>Edit Profile<a href="{{ url('/profile') }}" class="btn btn-info float-end">Back</a></h4>
+        </div>
                 <div class="card-body">
-                <div class="text-center"><h4>Edit Profile</h4></div><br>
                     <form method="POST" action="{{ url('profile/edit/'.Auth::user()->id) }}" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
@@ -86,7 +87,7 @@
                         <div class="col-md-4"></div>
                             <div class="col-md-6">
                                 @if(Auth::user()->image)
-                                <img id="previewImg" src="{{ asset('storage/images/profile/'. Auth::user()->name . '/' . Auth::user()->image) }}" alt="Product image" style="max-width:150px;width:100%;height:auto;"/>
+                                <img id="previewImg" src="{{ asset('storage/images/profile/'. Auth::user()->id . '/' . Auth::user()->image) }}" alt="Product image" style="max-width:150px;width:100%;height:auto;"/>
                                 @else
                                 <img id="previewImg" src="{{ asset('image/profile/profile.png') }}" alt="Product image" style="max-width:150px;width:100%;height:auto;"/>
                                 @endif
@@ -96,7 +97,12 @@
                         <div class="form-group row">
                             <label for="image-upload" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
                                 <div class="col-md-6">
-                                    <input type="file" name="image" onchange="previewFile(this)">
+                                <input type="file" name="image" accept="image/*" onchange="previewFile(this)" class="form-control @error('image') is-invalid @enderror" id="image">
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 </div>
                         </div><br>
 

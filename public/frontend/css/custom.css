@@ -72,6 +72,13 @@ body {
     border-bottom-right-radius: 8px;
 }
 
+@media only screen and (max-width: 600px) {
+  .card img {
+      height:225px;
+      position: relative;
+  }
+}
+
 .card:hover img{
     transform:scale(1.2) translateY(-10px);
     
@@ -142,6 +149,15 @@ body {
   @media only screen and (max-width: 600px) {
     .searchbar{
       width:100%;
+    }
+  }
+  .view-img{
+    height: 400px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .view-img{
+      height: 300px;
     }
   }
 

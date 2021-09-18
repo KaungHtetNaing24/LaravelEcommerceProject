@@ -35,7 +35,7 @@ class ProductController extends Controller
             'original_price' => 'required',
             'discount' => 'required|integer|between:0,100',
             'final_price' => 'required',
-            'image' => 'required',
+            
             
         ]);
         $products = new Product();
@@ -49,7 +49,7 @@ class ProductController extends Controller
         $products->original_price = $request->input('original_price');
         $products->discount = $request->input('discount');
         $products->final_price = $request->input('final_price');
-        
+        $products->save();
         
         
         
@@ -58,15 +58,12 @@ class ProductController extends Controller
             $destination_path = 'public/images/product';
             $file = $request->file('image');
             $file_name = $file->getClientOriginalName();
-            $path = request()->file('image')->storeAs($destination_path,$products->name. '/' .$file_name);
-            
-            $products->image = $file_name;
-        }else{
-            return 'no file selected';
+            request()->file('image')->storeAs($destination_path,$products->id. '/' .$file_name);
+            $products->update(['image' => $file_name]);
         }
 
         
-        $products->save();
+        
         return redirect('admin/products')->with('status',"Product add successfully");
     }
 
@@ -101,7 +98,7 @@ class ProductController extends Controller
 
         if($request->hasFile('image'))
         {
-            $path = 'storage/images/product/'. $products->name . '/' . $products->image;
+            $path = 'storage/images/product/'. $products->id . '/' . $products->image;
             if(File::exists($path))
             {
                 File::delete($path);
@@ -110,7 +107,7 @@ class ProductController extends Controller
             $destination_path = 'public/images/product';
             $file = $request->file('image');
             $file_name = $file->getClientOriginalName();
-            request()->file('image')->storeAs($destination_path,$products->name. '/' .$file_name);
+            request()->file('image')->storeAs($destination_path,$products->id. '/' .$file_name);
             
             $products->image = $file_name;
         }
@@ -132,7 +129,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $products = Product::find($id);
-        $path = 'storage/images/product/'.$products->name. '/' .$products->image;
+        $path = 'storage/images/product/'.$products->id. '/' .$products->image;
             if(File::exists($path))
             {
                 File::delete($path);

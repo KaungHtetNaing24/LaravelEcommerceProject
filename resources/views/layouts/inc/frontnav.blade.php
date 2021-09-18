@@ -4,7 +4,7 @@
 ?>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark shadow">
   <div class="container">
-    <a class="navbar-brand" href="#">My Shop</a>
+    <a class="navbar-brand" href="{{ url('/') }}">My Shop</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -48,7 +48,7 @@
         </li>
       </ul>
       <form class="d-flex ms-auto searchbar" action="{{ url('search') }}" method="GET">
-        <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" name="search" placeholder="Search Products..." aria-label="Search">
         <button class="btn btn-outline-light" type="submit">Search</button>
       </form>
       <ul class="navbar-nav ms-auto">
@@ -56,18 +56,18 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link {{ Request::is('login') ? 'active':'' }}" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link {{ Request::is('register') ? 'active':'' }}" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle {{ Request::is('profile') ? 'active':'' }}" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     {{ Auth::user()->name }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

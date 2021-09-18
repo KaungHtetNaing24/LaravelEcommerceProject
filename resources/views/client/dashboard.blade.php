@@ -18,10 +18,19 @@
                         <div class="item mt-3">
                             <div class="card">
                             <a href="{{ url('category/'.$popular->category->slug.'/'.$popular->slug) }}">
-                                <img src="{{ asset('storage/images/product/'. $popular->name . '/' . $popular->image) }}" alt="Product Image" class="image-fluid">
+                                @if($popular->image)
+                                <img src="{{ asset('storage/images/product/'. $popular->id . '/' . $popular->image) }}" alt="Product Image" class="image-fluid">
+                                @else
+                                <img src="{{ asset('image/product/default-image.jpg') }}" alt="Product Image" class="image-fluid">
+                                @endif
                                 <div class="card-body">
-                                    <h5>{{ $popular->name }}</h5>
+                                    <h5>{{ $popular->name }}
+                                    </h5>
+                                    @if($popular->quantity == 0)
+                                    <span class="badge bg-danger fs-6 float-first">Out of stock</span>
+                                    @else
                                     <span class="float-first fs-5 fw-bold">{{ $popular->final_price }} Ks</span>
+                                    @endif
                                     @if($popular->final_price != $popular->original_price)
                                         <span class="float-end fw-light"><s>{{ $popular->original_price }} Ks</s></span>
                                         <span class="float-end fw-light"> (-{{ $popular->discount }}%)</span>
@@ -44,7 +53,11 @@
                         <div class="item mt-3">
                             <div class="card">
                                 <a href="{{ url('category/'.$product->category->slug.'/'.$product->slug) }}">
-                                <img src="{{ asset('storage/images/product/'. $product->name . '/' . $product->image) }}"  alt="Product Image" class="image-fluid">
+                                @if($product->image)
+                                <img src="{{ asset('storage/images/product/'. $product->id . '/' . $product->image) }}"  alt="Product Image" class="image-fluid">
+                                @else
+                                <img src="{{ asset('image/product/default-image.jpg') }}"  alt="Product Image" class="image-fluid">
+                                @endif
                                 <div class="card-body">
                                     <h5>{{ $product->name }}</h5>
                                     <span class="float-first fs-5 fw-bold">{{ $product->final_price }} Ks</span>
@@ -70,7 +83,11 @@
                         <div class="item mt-3">
                             <div class="card">
                                 <a href="{{ url('category/'.$prod->category->slug.'/'.$prod->slug) }}">
-                                <img src="{{ asset('storage/images/product/'. $prod->name . '/' . $prod->image) }}"  alt="Product Image" class="image-fluid">
+                                @if($prod->image)
+                                <img src="{{ asset('storage/images/product/'. $prod->id . '/' . $prod->image) }}"  alt="Product Image" class="image-fluid">
+                                @else
+                                <img src="{{ asset('image/product/default-image.jpg') }}"  alt="Product Image" class="image-fluid">
+                                @endif
                                 <div class="card-body">
                                     <h6>{{ $prod->name }}</h6>
                                     <span class="float-first fs-5 fw-bold">{{ $prod->final_price }} Ks</span>
@@ -88,9 +105,9 @@
                 </div>
                 @endforeach
                 </div>
-                <br>
         </div>
     </div>
+    @include('layouts.inc.frontfooter')
 @endsection
 
 @section('scripts')
@@ -103,7 +120,7 @@
             dots:true,
             responsive:{
                 0:{
-                    items:2
+                    items:1
                 },
                 600:{
                     items:3
@@ -123,7 +140,7 @@
             dots:true,
             responsive:{
                 0:{
-                    items:2
+                    items:1
                 },
                 600:{
                     items:3

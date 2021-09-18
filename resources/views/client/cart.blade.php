@@ -23,7 +23,11 @@
                 @foreach($cartitems as $cartitem)
                 <div class="row product_data py-2 mb-3">
                     <div class="col-md-2 my-auto">
-                        <img src="{{ asset('storage/images/product/'. $cartitem->products->name . '/' . $cartitem->products->image) }}" alt="Image" class="w-50 h-100">
+                        @if($cartitem->products->image)
+                        <img src="{{ asset('storage/images/product/'. $cartitem->products->id . '/' . $cartitem->products->image) }}" alt="Image" class="w-50 h-100">
+                        @else
+                        <img src="{{ asset('image/product/default-image.jpg') }}" alt="Image" class="w-50 h-100">
+                        @endif
                     </div>
                     <div class="col-md-3 my-auto">
                     <br>
@@ -52,7 +56,7 @@
                     <div class="col-md-2 my-auto">
                         <br>
                         <div class="d-grid gap-2">
-                        <button class="btn btn-danger delete-cart-item">Remove</button>
+                        <button class="btn btn-danger delete-cart-item">Remove&nbsp;<i class="fa fa-trash-o" aria-hidden="true"></i></button>
                         </div>
                     </div>
                     

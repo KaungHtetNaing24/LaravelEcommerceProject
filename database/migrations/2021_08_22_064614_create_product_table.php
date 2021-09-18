@@ -24,7 +24,7 @@ class CreateProductTable extends Migration
             $table->double('original_price');
             $table->double('discount');
             $table->double('final_price');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });

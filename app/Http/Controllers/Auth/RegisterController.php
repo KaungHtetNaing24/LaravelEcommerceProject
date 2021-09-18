@@ -56,6 +56,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'phone_no' => ['required', 'string','max:11','regex:/^((09|\\+?950?9|\\+?95950?9)\\d{7,9})$/','unique:users'],
             'address' => ['required', 'string', 'max:255'],
+            'image'   =>  ['image','mimes:jpeg,png,jpg,gif','max:2048'],
             
         ]);
     }
@@ -86,7 +87,7 @@ class RegisterController extends Controller
         {
             $destination_path = 'public/images/profile';
             $file = request()->file('image')->getClientOriginalName();
-            request()->file('image')->storeAs($destination_path,$user->name. '/' .$file,'');
+            request()->file('image')->storeAs($destination_path,$user->id. '/' .$file,'');
             $user->update(['image' => $file]);
         }
 

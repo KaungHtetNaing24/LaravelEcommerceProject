@@ -19,9 +19,10 @@
         <div class="col-md-8">
             <div class="uicard">
                 
-
+            <div class="card-header bg-primary text-light">
+            <h4>Change password<a href="{{ url('/profile') }}" class="btn btn-info float-end">Back</a></h4>
+            </div>
                 <div class="card-body">
-                <div class="text-center"><h4>Change Password</h4></div><br>
                     <form method="POST" action="{{ url('profile/update-password') }}" enctype="multipart/form-data" class="change_password_form">
                         @csrf
                         <div class="form-group row">

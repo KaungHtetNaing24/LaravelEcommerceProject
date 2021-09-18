@@ -52,7 +52,13 @@
                                         <td>{{ $order->products->name }}</td>
                                         <td>{{ $order->quantity }}</td>
                                         <td>{{ $order->price }} Ks</td>
-                                        <td><img src="{{ asset('storage/images/product/'. $order->products->name . '/' . $order->products->image) }}" style="max-width:75px;" alt="Product Image" class="image-fluid"></td>
+                                        <td>
+                                            @if($order->products->image)
+                                            <img src="{{ asset('storage/images/product/'. $order->products->id . '/' . $order->products->image) }}" style="max-width:75px;" alt="Product Image" class="image-fluid">
+                                            @else
+                                            <img src="{{ asset('image/product/default-image.jpg') }}" style="max-width:75px;" alt="Product Image" class="image-fluid">
+                                            @endif
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

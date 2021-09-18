@@ -35,7 +35,7 @@
                             <label for="" class="fw-bold">Address</label>
                             <input type="text" class="form-control" value="{{ Auth::user()->address }}" name="address" readonly><br>
                             <label for="" class="fw-bold">Address Detail</label>
-                            <textarea name="address_detail" rows="3" class="form-control @error('address_detail') is-invalid @enderror" id="address_detail"></textarea>
+                            <textarea name="address_detail" rows="3" class="form-control @error('address_detail') is-invalid @enderror" id="address_detail" placeholder="Eg. Block(1), Kantkaw st, Lashio"></textarea>
                             @error('address_detail')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

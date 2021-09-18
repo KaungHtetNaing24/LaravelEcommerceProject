@@ -1,10 +1,12 @@
-@extends('layouts.app')
-
+@extends('layouts.front')
+@section('title')
+    Register
+@endsection
 @section('content')
-<div class="container">
+<div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="uicard mt-5 py-3">
                 
 
                 <div class="card-body">
@@ -24,7 +26,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -38,7 +40,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br>
 
                         <div class="form-group row">
                             <label for="phone_no" class="col-md-4 col-form-label text-md-right">{{ __('Phone No') }}</label>
@@ -52,7 +54,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br>
 
                         <div class="form-group row">
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
@@ -66,7 +68,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -80,7 +82,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br>
 
 
                         <div class="form-group row">
@@ -89,7 +91,7 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
-                        </div>
+                        </div><br>
 
                         
                         <div class="form-group row">
@@ -97,19 +99,24 @@
                             <div class="col-md-6">
                                 <img id="previewImg" src="{{ asset('image/profile/profile.png') }}" alt="Product image" style="max-width:150px;width:100%;height:auto;"/>
                             </div>
-                        </div>
+                        </div><br>
 
                         <div class="form-group row">
                             <label for="image-upload" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
                                 <div class="col-md-6">
-                                    <input type="file" name="image" onchange="previewFile(this)">
+                                    <input type="file" name="image" accept="image/*" onchange="previewFile(this)" class="form-control @error('image') is-invalid @enderror" id="image">
+                                    @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 </div>
-                        </div>
+                        </div><br>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Register') }}&nbsp;<i class="fa fa-sign-in" aria-hidden="true"></i></i>
                                 </button>
                             </div>
                         </div>

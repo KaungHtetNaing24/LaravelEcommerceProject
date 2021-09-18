@@ -25,7 +25,14 @@
               </div>
             </form>
             <ul class="navbar-nav">
-
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/') }}">
+                  <i class="material-icons" title="User dashboard">dashboard</i>
+                  <p class="d-lg-none d-md-block">
+                    User Dashboard
+                  </p>
+                </a>
+              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
@@ -80,7 +87,7 @@
                                 @foreach($users as $user)
                                 <tr>
                                     @if($user->image)
-                                    <td><img src="{{ asset('storage/images/profile/'.$user->name. '/' .$user->image) }}" style="max-width:100px;width:100%;height:auto;" alt="Image"></td>
+                                    <td><img src="{{ asset('storage/images/profile/'.$user->id. '/' .$user->image) }}" style="max-width:100px;width:100%;height:auto;" alt="Image"></td>
                                     @else
                                     <td><img src="{{ asset('image/profile/profile.png') }}" style="max-width:100px;width:100%;height:auto;" alt="Image"></td>
                                     @endif

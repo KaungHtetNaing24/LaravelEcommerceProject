@@ -22,7 +22,14 @@
               </div>
             </form>
             <ul class="navbar-nav">
-
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/') }}">
+                  <i class="material-icons" title="User dashboard">dashboard</i>
+                  <p class="d-lg-none d-md-block">
+                    User Dashboard
+                  </p>
+                </a>
+              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
@@ -79,7 +86,7 @@
                             <td>{{ $product->discount }}</td>
                             <td>{{ $product->final_price }}</td>
                             <td>
-                            <img src="{{ asset('storage/images/product/'. $product->name . '/' . $product->image) }}" style="max-width:100px;width:100%;height:auto;" alt="Image">
+                            <img src="{{ asset('storage/images/product/'. $product->id . '/' . $product->image) }}" style="max-width:100px;width:100%;height:auto;" alt="Image">
                             </td>
                             
                             <td>

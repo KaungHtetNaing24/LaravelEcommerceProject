@@ -1,10 +1,12 @@
-@extends('layouts.app')
-
+@extends('layouts.front')
+@section('title')
+    Login
+@endsection
 @section('content')
-<div class="container">
+<div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card rounded">
+            <div class="uicard mt-5 py-3">
                 
 
                 <div class="card-body">
@@ -24,7 +26,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
@@ -38,7 +40,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div><br>
 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
@@ -50,12 +52,12 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div><br>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                    {{ __('Login') }}&nbsp;<i class="fa fa-sign-in" aria-hidden="true"></i>
                                 </button>
 
                                 <!-- @if (Route::has('password.request'))

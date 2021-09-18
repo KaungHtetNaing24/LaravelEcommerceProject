@@ -21,7 +21,11 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-5">
-                        <img src="{{ asset('storage/images/product/'. $product->name . '/' . $product->image) }}" alt="Product Image" style="height:400px;" class="w-100 image-fluid">
+                        @if($product->image)
+                        <img src="{{ asset('storage/images/product/'. $product->id . '/' . $product->image) }}" alt="Product Image" class="w-100 image-fluid view-img">
+                        @else
+                        <img src="{{ asset('image/product/default-image.jpg') }}" alt="Product Image" class="w-100 image-fluid view-img">
+                        @endif
                     </div>
                     <div class="col-md-7">
                         <h3 class="mb-0 mt-3">{{ $product->name }}
@@ -35,7 +39,7 @@
                             <label class="badge bg-info float-end fs-6 m-2">Popular</label>
                         @endif
                         </h3>
-                        <hr>
+                        <hr class="view-hr">
                         
                         <h4 class="text-primary mb-0 mt-5">{{ $product->final_price }} Ks<h4>
                         @if($product->final_price != $product->original_price)

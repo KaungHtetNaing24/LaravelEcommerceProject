@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $orders = Order::where('user_id',Auth::id())->get();
+        $orders = Order::where('user_id',Auth::id())->orderBy('created_at', 'desc')->get();
         return view('client.orders.index',compact('orders','categories'));
     }
 
@@ -47,14 +47,15 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => 'required|unique:users,email,'.$id,
             'phone_no' => ['required', 'string','max:11','regex:/^((09|\\+?950?9|\\+?95950?9)\\d{7,9})$/','unique:users,phone_no,'.$id],
-            'address' => ['required', 'string', 'max:255'],      
+            'address' => ['required', 'string', 'max:255'],  
+            'image'   =>  ['image','mimes:jpeg,png,jpg,gif','max:2048'],    
         ]);
 
         $users = User::find($id);
 
         if($request->hasFile('image'))
         {
-            $path = 'storage/images/profile/'. $users->name . '/' . $users->image;
+            $path = 'storage/images/profile/'. $users->id . '/' . $users->image;
             if(File::exists($path))
             {
                 File::delete($path);
@@ -63,7 +64,7 @@ class UserController extends Controller
             $destination_path = 'public/images/profile';
             $file = $request->file('image');
             $file_name = $file->getClientOriginalName();
-            request()->file('image')->storeAs($destination_path,$request->input('name'). '/' .$file_name);
+            request()->file('image')->storeAs($destination_path,$users->id. '/' .$file_name);
             $users->image = $file_name;
         }
 
